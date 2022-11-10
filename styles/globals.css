@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,6 +17,11 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+input[aria-invalid="true"] {
+  border-style: solid;
+  border-color: red;
 }
 
 @media (prefers-color-scheme: dark) {
