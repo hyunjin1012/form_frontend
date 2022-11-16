@@ -45,9 +45,6 @@ export default function SignUp() {
   };
   const [addUser, { loading }] = useMutation(SIGNUP_MUTATION, { onCompleted });
   const onSubmitValid = (data) => {
-    if (loading) {
-      return;
-    }
     addUser({ variables: { ...data } });
   };
   return (

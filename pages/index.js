@@ -13,7 +13,7 @@ export default function Home() {
     if (data?.me) {
       router.push("/posts/" + data.me.email);
     }
-  });
+  }, [data]);
   return (
     <div>
       <Seo title="Start your survey" />

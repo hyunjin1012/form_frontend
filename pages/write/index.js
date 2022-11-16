@@ -32,15 +32,12 @@ export default function Create() {
     } = data;
     if (!ok) {
       setError("result", { message: error });
-    } else router.push({ pathname: "/posts/" + me.me.email });
+    } else router.push({ pathname: "/" });
   };
   const [uploadPost, { loading }] = useMutation(UPLOAD_MUTATION, {
     onCompleted,
   });
   const onSubmitValid = (data) => {
-    if (loading) {
-      return;
-    }
     uploadPost({ variables: { ...data } });
   };
   return (

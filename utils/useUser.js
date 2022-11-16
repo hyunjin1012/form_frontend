@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import useLoggedIn from "./useLoggedIn";
 
-const ME_QUERY = gql`
+export const ME_QUERY = gql`
   query me {
     me {
       id
@@ -22,7 +22,10 @@ export default function useUser() {
       router.push("/");
     }
   };
-  const { data } = useQuery(ME_QUERY, { skip: !hasToken });
+  const { data } = useQuery(ME_QUERY, {
+    skip: !hasToken,
+    fetchPolicy: "network-only",
+  });
   useEffect(() => {
     if (data?.me === null) {
       logOut();

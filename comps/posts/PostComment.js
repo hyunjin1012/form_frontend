@@ -68,9 +68,6 @@ export default function PostComment({ postId }) {
     ],
   });
   const onSubmitValid = (data) => {
-    if (loading) {
-      return;
-    }
     uploadComment({ variables: { content: data.content, postId } });
   };
   return (
@@ -85,9 +82,9 @@ export default function PostComment({ postId }) {
         <button
           type="submit"
           className="bg-teal-500 hover:bg-teal-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline disabled:opacity-20"
-          disabled={!isValid}
+          disabled={!isValid || loading}
         >
-          Comment
+          {loading ? "Hold On..." : "Comment"}
         </button>
       </div>
       {/* <AuthError message={errors?.result?.message} /> */}

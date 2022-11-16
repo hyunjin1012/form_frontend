@@ -21,6 +21,7 @@ export async function getServerSideProps(context) {
   const { data } = await client.query({
     query: GET_POSTS,
     variables: { email: email },
+    fetchPolicy: "network-only",
   });
   return { props: { posts: data.seePosts } };
 }

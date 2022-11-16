@@ -47,9 +47,6 @@ export default function Login() {
     onCompleted,
   });
   const onSubmitValid = (data) => {
-    if (loading) {
-      return;
-    }
     login({
       variables: { ...data },
     });
