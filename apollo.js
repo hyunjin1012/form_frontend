@@ -4,7 +4,7 @@ import { setContext } from "@apollo/client/link/context";
 let token = "";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://cs50-backend.herokuapp.com/",
 });
 
 const authLink = setContext((_, { headers }) => {
