@@ -16,7 +16,7 @@ export default function Home() {
   }, [data]);
   return (
     <div>
-      <Seo title="Start your survey" />
+      <Seo title="Create your world for your thoughts" />
       <main className="h-screen">{isLoggedIn ? "Loading..." : <Login />}</main>
     </div>
   );

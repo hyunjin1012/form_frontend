@@ -72,7 +72,7 @@ export default function PostComment({ postId }) {
   };
   return (
     <form onSubmit={handleSubmit(onSubmitValid)}>
-      <div className="flex gap-3 m-8">
+      <div className="flex gap-3 mx-8">
         <input
           type="text"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-teal-200 focus:shadow-outline"
@@ -87,7 +87,9 @@ export default function PostComment({ postId }) {
           {loading ? "Hold On..." : "Comment"}
         </button>
       </div>
-      {/* <AuthError message={errors?.result?.message} /> */}
+      <div className="mx-8 mb-8 mt-2 left-0">
+        <AuthError message={errors?.result?.message} />
+      </div>
     </form>
   );
 }
