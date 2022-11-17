@@ -44,7 +44,7 @@ export default function Create() {
   return (
     <div className="flex items-center justify-center p-8 h-screen">
       <Seo title="Leave your thoughts and enrich your world" />
-      <main>
+      <main className="w-full">
         <form
           className="w-[90%] justify-center items-center flex flex-col"
           onSubmit={handleSubmit(onSubmitValid)}
