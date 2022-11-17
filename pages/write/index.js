@@ -42,9 +42,9 @@ export default function Create() {
     uploadPost({ variables: { ...data } });
   };
   return (
-    <div className="flex items-center justify-center p-8 h-screen">
+    <div className="flex flex-col items-center justify-center p-8 h-screen">
       <Seo title="Leave your thoughts and enrich your world" />
-      <main className="w-full">
+      <main className="w-full flex items-center justify-center">
         <form
           className="w-[90%] justify-center items-center flex flex-col"
           onSubmit={handleSubmit(onSubmitValid)}

@@ -29,6 +29,10 @@ export async function getServerSideProps(context) {
 }
 
 export default function Posts({ posts, email }) {
+  const router = useRouter();
+  if (!router.isReady) {
+    return <div className="h-screen">Loading...</div>;
+  }
   return (
     <div>
       <Seo title={email + "'s world"} />
