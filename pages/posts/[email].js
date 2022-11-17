@@ -29,6 +29,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Posts({ posts, email }) {
+  console.log(posts);
   const router = useRouter();
   if (!router.isReady) {
     return <div className="h-screen">Loading...</div>;
