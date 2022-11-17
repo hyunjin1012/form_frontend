@@ -18,20 +18,20 @@ const GET_POSTS = gql`
   }
 `;
 
-// export async function getServerSideProps(context) {
-//   const { email } = context.query;
-//   const { data } = await client.query({
-//     query: GET_POSTS,
-//     variables: { email: email },
-//     fetchPolicy: "network-only",
-//   });
-//   return { props: { posts: data.seePosts, email: email } };
-// }
+export async function getServerSideProps(context) {
+  const { email } = context.query;
+  // const { data } = await client.query({
+  //   query: GET_POSTS,
+  //   variables: { email: email },
+  //   fetchPolicy: "network-only",
+  // });
+  return { props: { email: email } };
+}
 
-export default function Posts() {
+export default function Posts({ email }) {
   const router = useRouter();
-  const email = router.query;
-  const postsData = useQuery(GET_POSTS, { variables: email });
+  console.log(email);
+  const postsData = useQuery(GET_POSTS, { variables: { email } });
   const posts = postsData?.data?.seePosts;
   console.log(posts);
   if (!router.isReady) {
