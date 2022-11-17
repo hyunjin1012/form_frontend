@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { client } from "../../apollo";
 import Seo from "../../comps/layout/SEO";
@@ -18,19 +18,22 @@ const GET_POSTS = gql`
   }
 `;
 
-export async function getServerSideProps(context) {
-  const { email } = context.query;
-  const { data } = await client.query({
-    query: GET_POSTS,
-    variables: { email: email },
-    fetchPolicy: "network-only",
-  });
-  return { props: { posts: data.seePosts, email: email } };
-}
+// export async function getServerSideProps(context) {
+//   const { email } = context.query;
+//   const { data } = await client.query({
+//     query: GET_POSTS,
+//     variables: { email: email },
+//     fetchPolicy: "network-only",
+//   });
+//   return { props: { posts: data.seePosts, email: email } };
+// }
 
-export default function Posts({ posts, email }) {
-  console.log(posts);
+export default function Posts() {
   const router = useRouter();
+  const email = router.query;
+  const postsData = useQuery(GET_POSTS, { variables: email });
+  const posts = postsData?.data?.seePosts;
+  console.log(posts);
   if (!router.isReady) {
     return <div className="h-screen">Loading...</div>;
   } else
